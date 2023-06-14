@@ -2,10 +2,10 @@ import React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import 'react-native-gesture-handler';
 
 import Home from './src/pages/Home';
 import Sobre from './src/pages/Sobre';
+import Contato from './src/pages/Contato';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +33,11 @@ export default function App(){
         options={{
           title:'Pagina Sobre'
         }}
+        />
+
+        <Stack.Screen 
+        name="Contato"
+        component={Contato}
         />
       </Stack.Navigator>
     </NavigationContainer>
