@@ -1,41 +1,40 @@
-import React from "react"
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { FontAwesome5 } from '@expo/vector-icons';
-import { Feather } from '@expo/vector-icons';
+import React from 'react';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Teste app</Text>
-      <Ionicons name="home" size={25} color="blue" />
-      <FontAwesome5 name="user-tie" size={24} color="black" />
-      <Feather name="gift" size={24} color="black" />
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import 'react-native-gesture-handler';
 
-      <TouchableOpacity style={styles.btnYoutube}>
-        <Feather name="youtube" size={24} color="black" />
-        <Text style={styles.btnText}>Acessar canal</Text>
-      </TouchableOpacity>
-    </View>
-  );
+import Home from './src/pages/Home';
+import Sobre from './src/pages/Sobre';
+
+const Stack = createNativeStackNavigator();
+
+export default function App(){
+  return(
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen 
+        name="Home" 
+        component={Home} 
+        options={{
+          title: 'Tela inicio',
+          headerStyle:{
+            backgroundColor: '#121212'
+          },
+
+          headerTintColor: '#fff',
+          headerShown: false,
+        }}
+        />
+
+        <Stack.Screen 
+        name="Sobre" 
+        component={Sobre} 
+        options={{
+          title:'Pagina Sobre'
+        }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  btnYoutube:{
-    flexDirection: 'row',
-    justifyContent: "center",
-    alignItems: 'center',
-    padding: 5,
-    backgroundColor: 'red',
-    borderRadius: 5,
-  },
-  btnText:{
-    paddingLeft: 10,
-    color: 'white'
-  }
-});
